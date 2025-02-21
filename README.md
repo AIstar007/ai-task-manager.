@@ -5,20 +5,20 @@ A full-stack AI-powered task management system that leverages **Golang (Gin/Fibe
 
 ---
 
-# ⚡ Backend Setup (Golang + Gin)
+## ⚡ Backend Setup (Golang + Gin)
 
-# 1️⃣ Initialize Golang Project
+### 1️⃣ Initialize Golang Project
 ```sh
 mkdir ai-task-manager && cd ai-task-manager
 go mod init ai-task-manager
 ```
 
-# 2️⃣ Install Dependencies
+### 2️⃣ Install Dependencies
 ```sh
 go get github.com/gin-gonic/gin github.com/golang-jwt/jwt/v4 github.com/jackc/pgx/v4 github.com/gorilla/websocket
 ```
 
-# 3️⃣ Setup Gin API Server
+## 3️⃣ Setup Gin API Server
 ```go
 package main
 
@@ -37,14 +37,14 @@ func main() {
 
 ---
 
-# 🛢️ Database (PostgreSQL)
+## 🛢️ Database (PostgreSQL)
 
-# 1️⃣ Setup PostgreSQL Database
+### 1️⃣ Setup PostgreSQL Database
 ```sql
 CREATE DATABASE task_manager;
 ```
 
-# 2️⃣ Create Users and Tasks Table
+### 2️⃣ Create Users and Tasks Table
 ```sql
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
@@ -62,9 +62,9 @@ CREATE TABLE tasks (
 
 ---
 
-# 🔐 Authentication (JWT)
+## 🔐 Authentication (JWT)
 
-# 1️⃣ Generate JWT Token
+### 1️⃣ Generate JWT Token
 ```go
 import (
     "github.com/golang-jwt/jwt/v4"
@@ -80,9 +80,9 @@ func GenerateToken(userID int) (string, error) {
 
 ---
 
-# 🔄 WebSockets for Real-Time Updates
+## 🔄 WebSockets for Real-Time Updates
 
-# 1️⃣ Setup WebSocket Server
+### 1️⃣ Setup WebSocket Server
 ```go
 import (
     "github.com/gorilla/websocket"
@@ -102,16 +102,16 @@ func handleConnections(c *gin.Context) {
 
 ---
 
-# 🎨 Frontend (Next.js + Tailwind CSS)
+## 🎨 Frontend (Next.js + Tailwind CSS)
 
-# 1️⃣ Setup Next.js Project
+### 1️⃣ Setup Next.js Project
 ```sh
 npx create-next-app@latest frontend --typescript
 cd frontend
 npm install tailwindcss postcss autoprefixer
 ```
 
-# 2️⃣ Implement Task Dashboard
+### 2️⃣ Implement Task Dashboard
 ```tsx
 import { useEffect, useState } from 'react';
 
@@ -137,9 +137,9 @@ export default function Dashboard() {
 
 ---
 
-# 🧠 AI Task Suggestions
+## 🧠 AI Task Suggestions
 
-# 1️⃣ Integrate OpenAI API
+### 1️⃣ Integrate OpenAI API
 ```go
 import (
     "github.com/go-resty/resty/v2"
@@ -156,7 +156,7 @@ func GetTaskSuggestion(prompt string) string {
 
 ## 🚀 Deployment
 
-# ☁️ Backend Deployment (Render)
+### ☁️ Backend Deployment (Render)
 1. Push Backend Code to GitHub
    ```sh
    git add .
@@ -166,7 +166,7 @@ func GetTaskSuggestion(prompt string) string {
 2. Deploy on Render
 3. Connect PostgreSQL Database
 
-# ☁️ Frontend Deployment (Vercel)
+### ☁️ Frontend Deployment (Vercel)
 1. Push Frontend Code to GitHub
    ```sh
    git add .
