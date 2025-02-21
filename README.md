@@ -1,6 +1,6 @@
 # AI-Powered Task Management System
 
-# 🚀 Introduction
+## 🚀 Introduction
 A full-stack AI-powered task management system that leverages **Golang (Gin/Fiber)** for the backend, **PostgreSQL** for database management, and **Next.js + Tailwind CSS** for the frontend. The system includes JWT authentication, real-time updates via WebSockets, and AI-driven task suggestions using OpenAI API.
 
 ---
