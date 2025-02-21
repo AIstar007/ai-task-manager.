@@ -1,29 +1,52 @@
-# AI Task Manager
+# 🚀 AI Task Manager
 
-## Overview
-This is an AI-powered task management system using Golang, PostgreSQL, and Next.js.
+## 🌟 Overview
+An AI-powered task management system leveraging **Golang, PostgreSQL, and Next.js** to provide smart task organization, real-time updates, and AI-driven suggestions.
 
-## Tech Stack
-- **Backend:** Golang (Gin, PostgreSQL, WebSockets)
-- **Frontend:** Next.js, Tailwind CSS
-- **AI:** OpenAI API for task suggestions
+---
 
-## Setup
-### Backend
-1. Install dependencies
+## 🛠️ Tech Stack
+
+- **🖥️ Backend:** Golang (Gin, PostgreSQL, WebSockets)
+- **🎨 Frontend:** Next.js, Tailwind CSS
+- **🤖 AI Integration:** OpenAI API for task suggestions
+
+---
+
+## ⚡ Setup Guide
+
+### 🔹 Backend Setup
+1️⃣ **Install dependencies**
    ```sh
    go mod tidy
+   ```
 
-2. Start the server
+2️⃣ **Start the server**
    ```sh
    go run main.go
+   ```
 
-### Frontend
-1. Install dependencies
+---
+
+### 🔹 Frontend Setup
+1️⃣ **Install dependencies**
    ```sh
    npm install
+   ```
 
-2. Start the Next.js app
+2️⃣ **Start the Next.js app**
    ```sh
    npm run dev
+   ```
+
+---
+
+### 📌 Additional Features
+✅ JWT-based authentication 🔐
+✅ Real-time updates via WebSockets 🔄
+✅ AI-powered task recommendations 🤖
+✅ Fully responsive UI 🎨
+✅ Scalable cloud deployment ☁️
+
+---
 
