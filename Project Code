@@ -1,0 +1,37 @@
+Backend (Golang with Gin)
+Inside the ai-task-manager folder, create a backend directory:
+
+Code
+mkdir backend && cd backend
+
+Initialize the Go module:
+
+Code
+go mod init backend
+
+Install dependencies:
+
+Code
+go get github.com/gin-gonic/gin github.com/golang-jwt/jwt/v4 github.com/jackc/pgx/v4 github.com/gorilla/websocket github.com/go-resty/resty/v2
+
+Add main.go with the basic server setup.
+Include authentication, WebSockets, and AI-powered task suggestions.
+Setup database connection with PostgreSQL.
+
+
+Frontend (Next.js with Tailwind CSS)
+Go back to the root directory and create the frontend:
+
+Code
+cd ..
+npx create-next-app@latest frontend --typescript
+cd frontend
+npm install tailwindcss postcss autoprefixer
+
+Add a task dashboard in pages/index.tsx.
+Connect to the backend API for authentication and tasks
+
+git add .
+git commit -m "Initial commit - Backend and Frontend setup"
+git branch -M main
+git push -u origin main
