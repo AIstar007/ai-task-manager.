@@ -1,33 +1,157 @@
-Backend (Golang with Gin)
-Inside the ai-task-manager folder, create a backend directory:
+# AI-Powered Task Management System
 
-Code
-mkdir backend && cd backend
+## 1. Introduction
+This document outlines the development of an AI-powered task management system using Golang (Gin/Fiber) for the backend and Next.js with Tailwind CSS for the frontend. The system includes JWT-based authentication, real-time task updates using WebSockets, and AI-generated task recommendations via OpenAI/Gemini API.
 
-Initialize the Go module:
+---
 
-Code
-go mod init backend
+## 2. Project Setup
+### Backend
+1. **Initialize Golang Project**
+   ```sh
+   mkdir ai-task-manager && cd ai-task-manager
+   go mod init ai-task-manager
+   ```
+2. **Install Dependencies**
+   ```sh
+   go get github.com/gin-gonic/gin github.com/golang-jwt/jwt/v4 github.com/jackc/pgx/v4 github.com/gorilla/websocket
+   ```
+3. **Setup Gin API Server**
+   ```go
+   package main
+   
+   import (
+       "github.com/gin-gonic/gin"
+   )
+   
+   func main() {
+       r := gin.Default()
+       r.GET("/ping", func(c *gin.Context) {
+           c.JSON(200, gin.H{"message": "pong"})
+       })
+       r.Run(":8080")
+   }
+   ```
 
-Install dependencies:
+### Database (PostgreSQL)
+1. **Setup PostgreSQL Database**
+   ```sql
+   CREATE DATABASE task_manager;
+   ```
+2. **Create Users and Tasks Table**
+   ```sql
+   CREATE TABLE users (
+       id SERIAL PRIMARY KEY,
+       username TEXT UNIQUE NOT NULL,
+       password TEXT NOT NULL
+   );
+   
+   CREATE TABLE tasks (
+       id SERIAL PRIMARY KEY,
+       user_id INT REFERENCES users(id),
+       title TEXT NOT NULL,
+       status TEXT DEFAULT 'pending'
+   );
+   ```
 
-Code
-go get github.com/gin-gonic/gin github.com/golang-jwt/jwt/v4 github.com/jackc/pgx/v4 github.com/gorilla/websocket github.com/go-resty/resty/v2
+### Authentication (JWT)
+1. **Generate JWT Token**
+   ```go
+   import (
+       "github.com/golang-jwt/jwt/v4"
+   )
+   
+   func GenerateToken(userID int) (string, error) {
+       token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
+           "user_id": userID,
+       })
+       return token.SignedString([]byte("secret"))
+   }
+   ```
 
-Add main.go with the basic server setup.
-Include authentication, WebSockets, and AI-powered task suggestions.
-Setup database connection with PostgreSQL.
+### WebSockets for Real-Time Updates
+1. **Setup WebSocket Server**
+   ```go
+   import (
+       "github.com/gorilla/websocket"
+   )
+   
+   var upgrader = websocket.Upgrader{}
+   
+   func handleConnections(c *gin.Context) {
+       conn, _ := upgrader.Upgrade(c.Writer, c.Request, nil)
+       defer conn.Close()
+       for {
+           messageType, p, _ := conn.ReadMessage()
+           conn.WriteMessage(messageType, p)
+       }
+   }
+   ```
 
+---
 
-Frontend (Next.js with Tailwind CSS)
-Go back to the root directory and create the frontend:
-
-Code
-cd ..
+## 3. Frontend (Next.js + Tailwind CSS)
+### Setup Next.js Project
+```sh
 npx create-next-app@latest frontend --typescript
 cd frontend
 npm install tailwindcss postcss autoprefixer
+```
 
-Add a task dashboard in pages/index.tsx.
-Connect to the backend API for authentication and tasks
+### Implement Task Dashboard
+```tsx
+import { useEffect, useState } from 'react';
+
+export default function Dashboard() {
+    const [tasks, setTasks] = useState([]);
+
+    useEffect(() => {
+        fetch("/api/tasks").then(res => res.json()).then(setTasks);
+    }, []);
+
+    return (
+        <div className="p-4">
+            <h1 className="text-xl font-bold">Task Dashboard</h1>
+            <ul>
+                {tasks.map(task => (
+                    <li key={task.id}>{task.title} - {task.status}</li>
+                ))}
+            </ul>
+        </div>
+    );
+}
+```
+
+---
+
+## 4. AI Task Suggestions
+1. **Integrate OpenAI API**
+   ```go
+   import (
+       "github.com/go-resty/resty/v2"
+   )
+   
+   func GetTaskSuggestion(prompt string) string {
+       client := resty.New()
+       resp, _ := client.R().SetBody(map[string]string{"prompt": prompt}).Post("https://api.openai.com/v1/completions")
+       return resp.String()
+   }
+   ```
+
+---
+
+## 5. Deployment
+### Backend (Render)
+1. **Create Render Service**
+2. **Deploy Golang API**
+3. **Connect PostgreSQL Database**
+
+### Frontend (Vercel)
+1. **Deploy Next.js App**
+2. **Configure API Endpoints**
+
+---
+
+## 6. Conclusion
+This project showcases a scalable AI-powered task management system with Golang, PostgreSQL, WebSockets, and Next.js. Future improvements can include AI-driven task automation and Slack integration.
 
