@@ -31,7 +31,3 @@ npm install tailwindcss postcss autoprefixer
 Add a task dashboard in pages/index.tsx.
 Connect to the backend API for authentication and tasks
 
-git add .
-git commit -m "Initial commit - Backend and Frontend setup"
-git branch -M main
-git push -u origin main
