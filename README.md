@@ -181,19 +181,3 @@ func GetTaskSuggestion(prompt string) string {
 # 🎯 Conclusion
 This project is a scalable AI-powered task management system with Golang, PostgreSQL, WebSockets, and Next.js. Future improvements include AI-driven task automation and Slack integration.
 
-📌 GitHub Repository Structure:
-```
-📦 ai-task-manager
- ┣ 📂 backend
- ┃ ┣ 📜 main.go
- ┃ ┣ 📜 auth.go
- ┃ ┣ 📜 database.go
- ┃ ┣ 📜 websocket.go
- ┣ 📂 frontend
- ┃ ┣ 📜 pages/index.tsx
- ┃ ┣ 📜 components/TaskList.tsx
- ┣ 📜 README.md
- ┣ 📜 docker-compose.yml
- ┣ 📜 .gitignore
-```
-
