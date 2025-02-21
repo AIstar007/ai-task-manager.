@@ -178,6 +178,6 @@ func GetTaskSuggestion(prompt string) string {
 
 ---
 
-# 🎯 Conclusion
+## 🎯 Conclusion
 This project is a scalable AI-powered task management system with Golang, PostgreSQL, WebSockets, and Next.js. Future improvements include AI-driven task automation and Slack integration.
 
