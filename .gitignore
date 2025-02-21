@@ -1,3 +1,18 @@
 #How to Use This Repository
 
-##1.Clone the repository
+#1.Clone the repository
+
+git clone https://github.com/YOUR_USERNAME/ai-task-manager.git
+cd ai-task-manager
+
+
+#2.Run the backend
+cd backend
+go run main.go
+
+#3.Start the frontend
+cd frontend
+npm install
+npm run dev
+
+#4.Open http://localhost:3000 in your browser.
